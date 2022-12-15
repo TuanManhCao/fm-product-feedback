@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
+     "startProd": "node built/index.js",
+    "build": "tsc || true",
     "startDev": "./node_modules/nodemon/bin/nodemon.js"
   },
   "prisma": {
