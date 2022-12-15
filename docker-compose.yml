@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+   db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5555:5432"
+    # This mounts the pg data into your local `/.local-pgdata`
+    # which means it persists between rebuilds
+    volumes:
+      - ./.local-pgdata:/var/lib/postgresql/data/pgdata

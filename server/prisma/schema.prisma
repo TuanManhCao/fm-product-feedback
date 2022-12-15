@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Feedback {
+  id        String   @id @default(uuid())
+  title     String
+  detail    String
+  category  Category @default(Feature)
+  status    Status   @default(Suggestion)
+  upvotedBy User[]
+}
+
+model Comment {
+  id        String @id @default(uuid())
+  createdBy User   @relation(fields: [userId], references: [id])
+  message   String
+  userId String
+}
+
+model User {
+  id           String    @id @default(uuid())
+  fullName     String
+  profileImage String
+  userName     String
+  Feedback     Feedback? @relation(fields: [feedbackId], references: [id])
+  feedbackId   String?
+  Comment      Comment[]
+}
+
+enum Status {
+  Suggestion
+  Planned
+  InProgress
+  Live
+}
+
+enum Category {
+  Feature
+  UX
+  UI
+  Enhancement
+  Bug
+}
