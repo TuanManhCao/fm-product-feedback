@@ -26,9 +26,9 @@ app.get(`/feedbacks/:id`, async (req, res) => {
   res.json(post)
 })
 
+const port = process.env.PORT || 8080;
 
-
-const server = app.listen(8080, () =>
+const server = app.listen(port, () =>
   console.log(`
 🚀 Server ready at: http://localhost:8080`),
 )
