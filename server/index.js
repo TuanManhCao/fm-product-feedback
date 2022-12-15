@@ -15,8 +15,9 @@ app.get('/feedbacks', async (req, res) => {
 
 
 app.get(`/feedbacks/:id`, async (req, res) => {
-  const { id }: { id?: string } = req.params
+  const { id } = req.params
 
+  console.log("hello");
   const post = await prisma.feedback.findUnique({
     where: { id: String(id) },
   })
