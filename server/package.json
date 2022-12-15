@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "startProd": "node built/index.js",
+    "startProd": "node ./built/index.js",
     "build": "tsc || true",
-    "startDev": "./node_modules/nodemon/bin/nodemon.js"
+    "startDev": "./node_modules/nodemon/bin/nodemon.js",
+    "start": "ts-node index.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
